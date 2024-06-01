@@ -30,14 +30,12 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+               
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+              <button className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
+            hover:text-[#2d3663] hover:bg-gray-50">Login</button>
+                
               </div>
             </form>
           </div>

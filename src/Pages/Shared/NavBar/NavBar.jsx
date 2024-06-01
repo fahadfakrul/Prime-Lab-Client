@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png"
 const NavBar = () => {
     const navLinks =(
@@ -19,7 +19,7 @@ const NavBar = () => {
                   ? "font-semibold text-lg text-[#47CCC8]   "
                   : " font-semibold hover:text-[#47CCC8]   text-lg"
               }
-              to="/tests"
+              to="/allTests"
             >
               Tests
             </NavLink></li>
@@ -86,7 +86,10 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+         <Link to="/login"><button className="btn rounded-full px-6  dark:bg-[#47CCC8] dark:text-gray-50
+            hover:text-[#2d3663] hover:bg-gray-50">Log in</button></Link>
+         <Link to="/signup"><button className="btn rounded-full px-6  dark:bg-[#47CCC8] dark:text-gray-50
+            hover:text-[#2d3663] hover:bg-gray-50">Sign up</button></Link>
         </div>
       </div>
     </div>

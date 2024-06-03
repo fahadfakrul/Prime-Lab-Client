@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 const Signup = () => {
   const navigate =useNavigate()
   const location = useLocation()
-  const districts = useLoaderData();
+  const unsortedDistricts = useLoaderData();
+  const districts = unsortedDistricts.sort((a,b) => a.name.localeCompare(b.name))
   const from = location.state?.from?.pathname || "/";
   const [upazilas, setUpazilas] = useState([]);
   const {createUser,setUser,updateUser} = useAuth()
@@ -16,7 +17,8 @@ const Signup = () => {
     fetch("upazilas.json")
       .then((res) => res.json())
       .then((data) => {
-        setUpazilas(data);
+        const sortedUpazilas = data.sort((a,b) => a.name.localeCompare(b.name))
+        setUpazilas(sortedUpazilas);
       })
       .catch((err) => console.error(err));
   }, []);

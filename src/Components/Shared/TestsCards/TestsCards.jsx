@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const TestsCards = ({test}) => {
-    const {image,category,title,date,slots,shortDescription}=test;
+    const {image,category,title,date,slots,shortDescription,_id}=test;
   return (
     <article className="flex flex-col rounded-lg shadow-xl dark:bg-gray-50">
       <a
@@ -18,7 +20,7 @@ const TestsCards = ({test}) => {
         <a
           rel="noopener noreferrer"
           href="#"
-          className="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
+          className="text-xs tracking-wider uppercase hover:underline dark:text-[#2D3663]"
         >
           {category}
         </a>
@@ -32,7 +34,7 @@ const TestsCards = ({test}) => {
             <p>Date: {date}</p>
             <p>Slots: {slots} left</p>
         </div>
-        <button className="btn btn-primary">Details</button>
+        <Link to={`/testDetails/${_id}`}><button className="btn btn-primary">Details</button></Link>
       </div>
     </article>
   );

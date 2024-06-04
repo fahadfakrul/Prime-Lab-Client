@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import AllTests from "../Pages/AllTests/AllTests";
 import PrivateRoute from "./PrivateRoute";
+import TestDetails from "../Pages/TestDetails/TestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allTests",
-        element: <PrivateRoute><AllTests></AllTests></PrivateRoute>,
+        element: <AllTests></AllTests>,
       },
       {
         path: "/login",
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <Signup></Signup>,
         loader: () => fetch('district.json')
+      },
+      {
+        path: "/testDetails/:id",
+        element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
+        
       },
     ],
   },

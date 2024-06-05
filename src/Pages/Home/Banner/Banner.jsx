@@ -1,3 +1,4 @@
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const name = "diagnostics1";
@@ -24,7 +25,7 @@ const Banner = ({ image }) => {
             <h1 className="mb-3 md:mb-5 text-5xl lg:text-6xl font-bold font-niramit">{title}</h1>
             <p className="mb-3 md:mb-5 text-lg">{description}</p>
               <Link to="/allTests"><button className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
-            hover:text-[#2d3663] hover:bg-gray-50">All Tests</button></Link>
+            hover:text-[#2d3663] hover:bg-gray-50 transition hover:scale-x-105">All Tests <FaArrowRight></FaArrowRight></button></Link>
           </div>
         </div>
       </div>

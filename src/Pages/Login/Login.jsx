@@ -2,10 +2,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import loginImg from "../../assets/auth/login.jpg";
 import Swal from "sweetalert2";
+import { FaSpinner } from "react-icons/fa";
 const Login = () => {
   const navigate =useNavigate()
   const location = useLocation()
-  const { signIn } = useAuth();
+  const { signIn,loading } = useAuth();
   const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
@@ -59,12 +60,14 @@ const Login = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <input
+                <button
                   className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
             hover:text-[#2d3663] hover:bg-gray-50"
                   type="submit"
-                  value="Log in"
-                />
+                  
+                >
+                   {loading ? (<FaSpinner className="animate-spin m-auto"></FaSpinner>) : "Sign up"}
+                  </button>
               </div>
               <p><small>New Here? <Link to="/signup"><span className="underline">Create an account.</span></Link> </small></p>
             </form>

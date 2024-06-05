@@ -15,7 +15,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-[#47CCC8]   "
-              : " font-semibold hover:text-[#47CCC8]   text-lg"
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
           }
           to="/"
         >
@@ -27,7 +27,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-[#47CCC8]   "
-              : " font-semibold hover:text-[#47CCC8]   text-lg"
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
           }
           to="/allTests"
         >
@@ -40,7 +40,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-[#47CCC8]   "
-              : " font-semibold hover:text-[#47CCC8]   text-lg"
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl  text-lg"
           }
           to="/sdfsd"
         >
@@ -52,7 +52,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-[#47CCC8]   "
-              : " font-semibold hover:text-[#47CCC8]   text-lg"
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
           }
           to="/fsdf"
         >

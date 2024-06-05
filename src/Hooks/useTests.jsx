@@ -15,7 +15,7 @@ const useTests = () => {
     //     ) 
     // },[])
 
-    const {data: tests =[],  isLoading: loading, refetch} = useQuery({
+    const {data: tests = [],  isLoading: loading, refetch} = useQuery({
         queryKey: ['tests'],
         queryFn: async () => {
            const res = await axiosPublic.get("/tests")

@@ -119,7 +119,7 @@ const Signup = () => {
                     className="input input-bordered"
                     required
                   />
-                  {errors.email && (
+                  {errors.name && (
                     <p className="text-red-600">This field is required</p>
                   )}
                 </div>
@@ -162,7 +162,7 @@ const Signup = () => {
                   className="file-input file-input-bordered w-full "
                 />
 
-                {errors.photoURL && (
+                {errors.photo && (
                   <p className="text-red-600">This field is required</p>
                 )}
               </div>

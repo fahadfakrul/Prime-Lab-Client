@@ -8,7 +8,7 @@ const Dashboard = () => {
       <SideBar></SideBar>
       {/* outlet */}
       <div className="flex-1 md:ml-64">
-        <div className="p-5 border border-red-600"><Outlet></Outlet></div>
+        <div className="p-5 "><Outlet></Outlet></div>
       </div>
     </div>
   );

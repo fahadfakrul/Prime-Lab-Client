@@ -10,6 +10,7 @@ import TestDetails from "../Pages/TestDetails/TestDetails";
 import Dashboard from "../Layout/Dashboard";
 import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import AddTests from "../Pages/Dashboard/Admin/AddTests";
+import TestsList from "../Pages/Dashboard/Admin/TestsList";
 
 export const router = createBrowserRouter([
   {
@@ -73,7 +74,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "allTests",
-        element: <MyProfile></MyProfile>
+        element: <TestsList></TestsList>
       },
       {
         path: "reservations",

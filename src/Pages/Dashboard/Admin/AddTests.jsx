@@ -4,15 +4,58 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddTests = () => {
+    const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [startDate, setStartDate] = useState(new Date());
+    const [loading, setLoading] = useState(false)
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
       } = useForm();
-      const onSubmit = (data) => {console.log(data)}
+      const onSubmit = async (data) => {
+        setLoading(true)
+        const imageFile = { image: data.photo[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {'content-type':'multipart/form-data'},
+    });
+    if(res.data.success){
+        const testItem = {
+            title: data.title,
+            category: data.category,
+            shortDescription: data.shortDescription,
+            details: data.details,
+            date: startDate.toLocaleDateString(),
+            slots: data.slots,
+            price: data.price,
+            image: res.data.data.display_url
+        }
+        const testRes= await axiosSecure.post('/tests',testItem)
+        console.log(testRes)
+        if (testRes.data.insertedId){
+            setLoading(false)
+            reset(  )
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${data.title} Added Successfully`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate('/dashboard/allTests')
+           }
+    }
+    }
     return (
         <div className=''>
             <div className="hero min-h-screen bg-base-200 lg:px-20">
@@ -177,12 +220,12 @@ const AddTests = () => {
                   className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
             hover:text-[#2d3663] hover:bg-gray-50"
                 >
-                    Add Test
-                  {/* {loading ? (
+                    
+                  {loading ? (
                     <FaSpinner className="animate-spin m-auto"></FaSpinner>
                   ) : (
-                    "Sign up"
-                  )} */}
+                    "Save and Continue"
+                  )}
                 </button>
               </div>
               

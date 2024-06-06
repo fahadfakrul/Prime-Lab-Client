@@ -35,6 +35,11 @@ const Login = () => {
           </div>
           <div className="card  w-full lg:w-1/2 max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
+            <div>
+                <p className="text-4xl text-center font-medium text-[#2d3663] ">
+                 Log In
+                </p>
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

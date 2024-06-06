@@ -7,6 +7,7 @@ import Signup from "../Pages/Signup/Signup";
 import AllTests from "../Pages/AllTests/AllTests";
 import PrivateRoute from "./PrivateRoute";
 import TestDetails from "../Pages/TestDetails/TestDetails";
+import Dashboard from "../Layout/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -38,4 +39,13 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "dashboard",
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: "myProfile",
+        // element: 
+      }]
+  }
 ]);

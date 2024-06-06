@@ -42,7 +42,7 @@ const NavBar = () => {
               ? "font-semibold text-lg text-[#47CCC8]   "
               : " font-semibold hover:text-[#47CCC8] transition hover:text-xl  text-lg"
           }
-          to="/sdfsd"
+          to="/dashboard"
         >
           User Dashboard
         </NavLink>
@@ -89,6 +89,7 @@ const NavBar = () => {
               {navLinks}
             </ul>
           </div>
+          <Link to="/">
           <div className="flex items-center gap-3">
             <img className="h-10 w-10" src={logo} alt="" />
             <a className="text-lg md:text-xl font-semibold font-niramit">
@@ -97,7 +98,7 @@ const NavBar = () => {
                 Diagnostic Center
               </span>
             </a>
-          </div>
+          </div></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="gap-5 menu-horizontal px-1">{navLinks}</ul>

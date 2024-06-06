@@ -1,4 +1,9 @@
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import signUpImg from "../../assets/auth/signup.jpg";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
@@ -7,22 +12,26 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaSpinner } from "react-icons/fa";
 
-const image_hosting_key= import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api= `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Signup = () => {
   const axiosPublic = useAxiosPublic();
-  const navigate =useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const unsortedDistricts = useLoaderData() || [];
-  const districts = unsortedDistricts.sort((a,b) => a.name.localeCompare(b.name))
+  const districts = unsortedDistricts.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
   const from = location.state?.from?.pathname || "/";
   const [upazilas, setUpazilas] = useState([]);
-  const {createUser,setUser,updateUser, loading, setLoading} = useAuth()
+  const { createUser, setUser, updateUser, loading, setLoading } = useAuth();
   useEffect(() => {
     fetch("upazilas.json")
       .then((res) => res.json())
       .then((data) => {
-        const sortedUpazilas = data.sort((a,b) => a.name.localeCompare(b.name))
+        const sortedUpazilas = data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
         setUpazilas(sortedUpazilas);
       })
       .catch((err) => console.error(err));
@@ -34,36 +43,39 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    const imageFile ={image: data.photo[0]} 
-    setLoading(true)
+    const imageFile = { image: data.photo[0] };
+    setLoading(true);
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    })
+        "Content-Type": "multipart/form-data",
+      },
+    });
     console.log(res.data);
-   if(res.data.success){
-     createUser(data.email, data.password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      updateUser(data.name, res.data.data.display_url)
-      .then(() => {
-        console.log('user updated successfully');
-      }).catch(err => {
-        console.log(err.message);
+    if (res.data.success) {
+      createUser(data.email, data.password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUser(data.name, res.data.data.display_url)
+          .then(() => {
+            console.log("user updated successfully");
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+        setUser({
+          ...result?.user,
+          photoURL: res.data.data.display_url,
+          displayName: data.name,
+        });
+        Swal.fire({
+          icon: "success",
+          title: "Account created successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
       });
-      setUser({...result?.user, photoURL:  res.data.data.display_url, displayName: data.name});
-      Swal.fire({
-        icon: "success",
-        title: "Account created successfully!",
-        showConfirmButton: false,
-        timer: 1500
-      })
-      navigate(from, { replace: true });
-    })
-   }
-    
+    }
   };
   const password = watch("password");
   return (
@@ -75,6 +87,11 @@ const Signup = () => {
           </div>
           <div className="card w-full lg:w-8/12 max-w-lg shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <div>
+                <p className="text-4xl text-center font-medium text-[#2d3663] ">
+                  Sign Up
+                </p>
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -136,8 +153,15 @@ const Signup = () => {
                 <label className="label">
                   <span className="label-text">Photo</span>
                 </label>
-                <input required id="image" accept="image/*"  {...register("photo", { required: true })} type="file" className="file-input file-input-bordered w-full max-w-xs" />
-                
+                <input
+                  required
+                  id="image"
+                  accept="image/*"
+                  {...register("photo", { required: true })}
+                  type="file"
+                  className="file-input file-input-bordered w-full "
+                />
+
                 {errors.photoURL && (
                   <p className="text-red-600">This field is required</p>
                 )}
@@ -247,12 +271,16 @@ const Signup = () => {
               </div>
               <div className="form-control mt-6">
                 <button
-                disabled={loading}
+                  disabled={loading}
                   type="submit"
-      
                   className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
-            hover:text-[#2d3663] hover:bg-gray-50">
-                {loading ? (<FaSpinner className="animate-spin m-auto"></FaSpinner>) : "Sign up"}
+            hover:text-[#2d3663] hover:bg-gray-50"
+                >
+                  {loading ? (
+                    <FaSpinner className="animate-spin m-auto"></FaSpinner>
+                  ) : (
+                    "Sign up"
+                  )}
                 </button>
               </div>
               <p>

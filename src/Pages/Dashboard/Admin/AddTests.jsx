@@ -37,7 +37,7 @@ const AddTests = () => {
             details: data.details,
             date: startDate.toLocaleDateString(),
             slots: data.slots,
-            price: data.price,
+            price: parseFloat(data.price),
             image: res.data.data.display_url
         }
         const testRes= await axiosSecure.post('/tests',testItem)
@@ -201,7 +201,7 @@ const AddTests = () => {
                   type="text"
                   placeholder="details"
                   className="textarea textarea-bordered"
-                  
+                  rows={4}
                   {...register("details", {
                     required: true,
                   })}
@@ -215,7 +215,7 @@ const AddTests = () => {
               
               <div className="form-control mt-6">
                 <button
-                //   disabled={loading}
+                   disabled={loading}
                   type="submit"
                   className="btn rounded-full px-6 border-none dark:bg-[#2d3663] dark:text-gray-50
             hover:text-[#2d3663] hover:bg-gray-50"

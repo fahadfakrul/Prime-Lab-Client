@@ -1,12 +1,41 @@
 import { FaTrashCan } from "react-icons/fa6";
 import useTests from "../../../Hooks/useTests";
 import { Link } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaSpinner } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const TestsList = () => {
-  const [tests] = useTests();
+  const [tests,loading, refetch] = useTests();
+  const axiosSecure = useAxiosSecure();
 
-  const handleDeleteTest = async(test) => {}
+  const handleDeleteTest = async(test) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#2d3663",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axiosSecure.delete(`/tests/${test._id}`);
+          console.log(res.data);
+          if(res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `${test.name} deleted successfully`,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+          }
+          
+        }
+      });
+  }
   return (
     <div>
       <div className="overflow-x-auto p-20">
@@ -63,7 +92,12 @@ const TestsList = () => {
                       onClick={() => handleDeleteTest(test)}
                       className="btn bg-[#d90429] "
                     >
-                      <FaTrashCan className="text-white"></FaTrashCan>
+                         {loading ? (
+                    <FaSpinner className="animate-spin m-auto"></FaSpinner>
+                  ) : (
+                    <FaTrashCan className="text-white"></FaTrashCan>
+                  )}
+                      
                     </button>
               </td>
             </tr>)}

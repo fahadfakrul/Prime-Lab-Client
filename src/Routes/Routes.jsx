@@ -11,6 +11,7 @@ import Dashboard from "../Layout/Dashboard";
 import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import AddTests from "../Pages/Dashboard/Admin/AddTests";
 import TestsList from "../Pages/Dashboard/Admin/TestsList";
+import UpdateTests from "../Pages/Dashboard/Admin/UpdateTests";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "allTests",
         element: <TestsList></TestsList>
+      },
+      {
+        path: "updateTests/:id",
+        element: <UpdateTests></UpdateTests>
       },
       {
         path: "reservations",

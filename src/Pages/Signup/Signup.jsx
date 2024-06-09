@@ -57,7 +57,18 @@ const Signup = () => {
         console.log(loggedUser);
         updateUser(data.name, res.data.data.display_url)
           .then(() => {
-            console.log("user updated successfully");
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+              photoURL: res.data.data.display_url,
+              district: data.district,
+              upazila: data.upazila,
+              bloodGroup: data.bloodGroup,
+              status: "active",
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              console.log(res)
+            });
           })
           .catch((err) => {
             console.log(err.message);
@@ -238,12 +249,11 @@ const Signup = () => {
                   <p className="text-red-600">Password must be 6 characters</p>
                 )}
                 {errors.password?.type === "maxLength" && (
-                  <p className="text-red-600">Password must be 6 characters</p>
+                  <p className="text-red-600">Password must be within 20 characters</p>
                 )}
                 {errors.password?.type === "pattern" && (
                   <p className="text-red-600">
-                    Password must be 6 letter password, with at least a symbol,
-                    upper and lower case letters and a number
+                    Password must be 6-20 letter password, with at least one digit and one alphabetic character
                   </p>
                 )}
               </div>

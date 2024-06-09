@@ -12,6 +12,8 @@ import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import AddTests from "../Pages/Dashboard/Admin/AddTests";
 import TestsList from "../Pages/Dashboard/Admin/TestsList";
 import UpdateTests from "../Pages/Dashboard/Admin/UpdateTests";
+import Allusers from "../Pages/Dashboard/AllUsers/Allusers";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -63,35 +65,35 @@ export const router = createBrowserRouter([
       // admin routes
       {
         path: "statistics",
-        element: <MyProfile></MyProfile>
+        element: <AdminRoute><MyProfile></MyProfile></AdminRoute>
       },
       {
         path: "allUsers",
-        element: <MyProfile></MyProfile>
+        element: <AdminRoute><Allusers></Allusers></AdminRoute>
       },
       {
         path: "addTest",
-        element: <AddTests></AddTests>
+        element: <AdminRoute><AddTests></AddTests></AdminRoute>
       },
       {
         path: "allTests",
-        element: <TestsList></TestsList>
+        element: <AdminRoute><TestsList></TestsList></AdminRoute>
       },
       {
         path: "updateTests/:id",
-        element: <UpdateTests></UpdateTests>
+        element: <AdminRoute><UpdateTests></UpdateTests></AdminRoute>
       },
       {
         path: "reservations",
-        element: <MyProfile></MyProfile>
+        element:<AdminRoute> <MyProfile></MyProfile></AdminRoute>
       },
       {
         path: "addBanners",
-        element: <MyProfile></MyProfile>
+        element: <AdminRoute> <MyProfile></MyProfile></AdminRoute>
       },
       {
         path: "allBanners",
-        element: <MyProfile></MyProfile>
+        element:<AdminRoute><MyProfile></MyProfile></AdminRoute>
       },
       
     ]

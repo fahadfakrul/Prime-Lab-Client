@@ -24,7 +24,7 @@ const Login = () => {
         timer: 1500
       })
       navigate(from, { replace: true });
-    });
+    })
   };
   return (
     <div>
@@ -71,7 +71,7 @@ const Login = () => {
                   type="submit"
                   
                 >
-                   {loading ? (<FaSpinner className="animate-spin m-auto"></FaSpinner>) : "Sign up"}
+                   {loading ? (<FaSpinner className="animate-spin m-auto"></FaSpinner>) : "Log in"}
                   </button>
               </div>
               <p><small>New Here? <Link to="/signup"><span className="underline">Create an account.</span></Link> </small></p>

@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
+import useAdmin from "../../../Hooks/useAdmin";
 const NavBar = () => {
+  const [isAdmin]=useAdmin()
   const { user, logOut } = useAuth();
   const handleLogOut = () => {
     logOut()
@@ -34,31 +36,32 @@ const NavBar = () => {
           Tests
         </NavLink>
       </li>
-      <li>
-        {" "}
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-lg text-[#47CCC8]   "
-              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl  text-lg"
-          }
-          to="/dashboard"
-        >
-          User Dashboard
-        </NavLink>
-      </li>
-      <li>
+      {user && (<>{isAdmin  ? (<> <li>
         <NavLink
           className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-[#47CCC8]   "
               : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
           }
-          to="/fsdf"
+          to="/dashboard/statistics"
         >
           Admin Dashboard
         </NavLink>
-      </li>
+      </li></>):(<><li>
+      {" "}
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "font-semibold text-lg text-[#47CCC8]   "
+            : " font-semibold hover:text-[#47CCC8] transition hover:text-xl  text-lg"
+        }
+        to="/dashboard/myProfile"
+      >
+        User Dashboard
+      </NavLink>
+    </li></>)}</>)}
+      
+     
     </>
   );
   return (

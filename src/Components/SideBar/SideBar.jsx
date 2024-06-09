@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
+import useAdmin from "../../Hooks/useAdmin";
 const SideBar = () => {
   const [isActive, setActive] = useState(false);
-
+  const [isAdmin] = useAdmin()
   const handleToggle = () => {
     setActive(!isActive);
   };
@@ -67,20 +68,7 @@ const SideBar = () => {
         </div>
         <div className="flex flex-col">
           <nav>
-            <NavLink to="myProfile"
-            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
-                <div className="px-4 py-2">My Profile</div>
-            </NavLink>
-            <NavLink to="myUpcomingAppointments"
-            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
-                <div className="px-4 py-2">My Upcoming Appointments</div>
-            </NavLink>
-            <NavLink to="testResults"
-            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
-                <span className="px-4 py-2">Test Results</span>
-            </NavLink>
-
-            <NavLink to="statistics"
+            {isAdmin? (<>  <NavLink to="statistics"
             className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
                 <span className="px-4 py-2">Statistics</span>
             </NavLink>
@@ -107,7 +95,21 @@ const SideBar = () => {
             <NavLink to="allBanners"
             className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
                 <span className="px-4 py-2">All Banners</span>
+            </NavLink></>): (<> <NavLink to="myProfile"
+            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
+                <div className="px-4 py-2">My Profile</div>
             </NavLink>
+            <NavLink to="myUpcomingAppointments"
+            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
+                <div className="px-4 py-2">My Upcoming Appointments</div>
+            </NavLink>
+            <NavLink to="testResults"
+            className={({isActive}) => `flex items-center px-4 py-1 my-1 transition-colors duration-300 transform hover:bg-gray-400 hover:rounded-sm hover:text-[#2D3663] ${isActive ? 'bg-gray-400 rounded-sm text-[#2D3663]':'text-white'} `}>
+                <span className="px-4 py-2">Test Results</span>
+            </NavLink></>)}
+           
+
+          
           </nav>
         </div> 
       </div>

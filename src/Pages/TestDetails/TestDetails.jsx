@@ -14,7 +14,7 @@ const TestDetails = () => {
   const [couponCode, setCouponCode] = useState('');
   const [totalPrice, setTotalPrice] = useState(0); 
   const axiosPublic = useAxiosPublic();
-  const { data: test = {}, isLoading } = useQuery({
+  const { data: test = {}, isLoading , refetch} = useQuery({
     queryKey: ["tests"],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/test/${id}`);
@@ -128,7 +128,7 @@ const TestDetails = () => {
           <button onClick={handleApplyCoupon} className="btn bg-[#2D3663] text-white ">Apply</button>
           <p className=" font-semibold mt-2">Total Price: ${totalPrice}</p>
           <Elements stripe={stripePromise}>
-            <CheckoutForm totalPrice={totalPrice} test={test} />
+            <CheckoutForm totalPrice={totalPrice} test={test} refetch={refetch}/>
           </Elements>
           
         

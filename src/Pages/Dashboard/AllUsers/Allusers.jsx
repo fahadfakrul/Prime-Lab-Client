@@ -5,11 +5,12 @@ import { MdBlock } from "react-icons/md";
 import useUsers from "../../../Hooks/useUsers";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaUsers } from "react-icons/fa";
+import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 
 
 const Allusers = () => {
    const axiosSecure = useAxiosSecure()
-      const [users,refetch ]= useUsers();
+      const [users,refetch ,isLoading ]= useUsers();
       console.log(users);
       
       const handleAdminAction = (user, action) => {
@@ -28,6 +29,9 @@ const Allusers = () => {
           }
         });
       }
+      if (isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+       }
     return (
         <div>
            <div className="overflow-x-auto p-20">

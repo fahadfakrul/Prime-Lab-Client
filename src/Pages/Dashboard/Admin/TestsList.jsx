@@ -4,11 +4,20 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaSpinner } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 
 const TestsList = () => {
   const [tests, loading, refetch] = useTests();
   const axiosSecure = useAxiosSecure();
+console.log(tests);
 
+  if (loading){
+    return <LoadingSpinner></LoadingSpinner>
+   }
+   if (!Array.isArray(tests)) {
+    console.error('Tests is not an array:', tests);
+    return <div>Error: tests is not an array</div>;
+  }
   const handleDeleteTest = async (test) => {
     Swal.fire({
       title: "Are you sure?",
@@ -35,6 +44,7 @@ const TestsList = () => {
       }
     });
   };
+ 
   return (
     <div>
       <div className="overflow-x-auto p-20">

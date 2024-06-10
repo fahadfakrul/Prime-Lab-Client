@@ -5,12 +5,14 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
 import { ImSpinner9 } from 'react-icons/im';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 
-const CheckoutForm = ({totalPrice ,test}) => {
+const CheckoutForm = ({totalPrice ,test, refetch}) => {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
   const {user} = useAuth()
   const axiosSecure= useAxiosSecure()
   const [clientSecret, setClientSecret] = useState();
@@ -82,11 +84,12 @@ const CheckoutForm = ({totalPrice ,test}) => {
     if (paymentIntent.status === 'succeeded' ){
       setProcessing(false)
         const paymentInfo = {
+          name: user.name,
             email: user.email,
             price: totalPrice,
             transactionId: paymentIntent.id,
             date: new Date(),
-            testName: test.name,
+            testName: test.title,
             testId: test._id,
             reportStatus: 'pending',
         }
@@ -94,7 +97,7 @@ const CheckoutForm = ({totalPrice ,test}) => {
         
           const res =  await axiosSecure.post('/reservations', paymentInfo)
           console.log(res);
-          // refetch()
+          refetch()
           if(res.data?.result?.insertedId){
             Swal.fire({
               position: "top-end",
@@ -103,7 +106,7 @@ const CheckoutForm = ({totalPrice ,test}) => {
               showConfirmButton: false,
               timer: 1500
             });
-            // navigate("/dashboard/paymentHistory")
+            navigate("/")
           }
        
     }

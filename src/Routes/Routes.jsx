@@ -16,6 +16,8 @@ import Allusers from "../Pages/Dashboard/AllUsers/Allusers";
 import AdminRoute from "./AdminRoute";
 import AddBanner from "../Pages/Dashboard/Admin/AddBanner";
 import AllBanners from "../Pages/Dashboard/Admin/AllBanners/AllBanners";
+import Reservations from "../Pages/Dashboard/User/Reservations";
+import TestResults from "../Pages/Dashboard/User/TestResults";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +65,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "testResults",
-        element: <Dashboard></Dashboard>
+        element: <TestResults></TestResults>
       },
       // admin routes
       {
@@ -88,15 +90,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "reservations",
-        element:<AdminRoute></AdminRoute>
+        element:<AdminRoute><Reservations></Reservations></AdminRoute>
       },
       {
         path: "addBanners",
-        element: <AddBanner></AddBanner>
+        element: <AdminRoute><AddBanner></AddBanner></AdminRoute>
       },
       {
         path: "allBanners",
-        element:<AllBanners></AllBanners>
+        element:<AdminRoute><AllBanners></AllBanners></AdminRoute>
       },
       
     ]

@@ -31,7 +31,7 @@ const AddBanner = () => {
       couponCode: data.couponCode,
       discountRate: data.discountRate,
       text : data.text,
-      isActive: 'true'
+      isActive: false
     };
     const Res= await axiosSecure.post('/banner',bannerItem)
     if (Res.data.insertedId){

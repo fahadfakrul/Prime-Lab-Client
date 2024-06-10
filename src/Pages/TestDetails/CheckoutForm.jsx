@@ -89,6 +89,7 @@ const CheckoutForm = ({totalPrice ,test, refetch}) => {
             price: totalPrice,
             transactionId: paymentIntent.id,
             date: new Date(),
+            testDate: test.date,
             testName: test.title,
             testId: test._id,
             reportStatus: 'pending',

@@ -18,6 +18,7 @@ import AddBanner from "../Pages/Dashboard/Admin/AddBanner";
 import AllBanners from "../Pages/Dashboard/Admin/AllBanners/AllBanners";
 import Reservations from "../Pages/Dashboard/User/Reservations";
 import TestResults from "../Pages/Dashboard/User/TestResults";
+import UpcomingAppointments from "../Pages/Dashboard/User/UpcomingAppointments";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myUpcomingAppointments",
-        element: <Dashboard></Dashboard>
+        element: <UpcomingAppointments></UpcomingAppointments>
       },
       {
         path: "testResults",

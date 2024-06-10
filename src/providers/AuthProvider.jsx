@@ -26,11 +26,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const updateUser = (name, photo) => {
-    setLoading(true);
+    
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
-    });
+    }).finally(() => setLoading(false));
   };
   const logOut = () => {
     setLoading(true);
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("access-token");
         setLoading(false);
       }
-      setLoading(false);
+      setLoading(false)
     });
     return () => {
       return unsubscribe;

@@ -14,6 +14,8 @@ import TestsList from "../Pages/Dashboard/Admin/TestsList";
 import UpdateTests from "../Pages/Dashboard/Admin/UpdateTests";
 import Allusers from "../Pages/Dashboard/AllUsers/Allusers";
 import AdminRoute from "./AdminRoute";
+import AddBanner from "../Pages/Dashboard/Admin/AddBanner";
+import AllBanners from "../Pages/Dashboard/Admin/AllBanners/AllBanners";
 
 export const router = createBrowserRouter([
   {
@@ -52,20 +54,21 @@ export const router = createBrowserRouter([
       // user routes
       {
         path: "myProfile",
-        element: <MyProfile></MyProfile>
+        element: <MyProfile></MyProfile>,
+        
       },
       {
         path: "myUpcomingAppointments",
-        element: <MyProfile></MyProfile>
+        element: <Dashboard></Dashboard>
       },
       {
         path: "testResults",
-        element: <MyProfile></MyProfile>
+        element: <Dashboard></Dashboard>
       },
       // admin routes
       {
         path: "statistics",
-        element: <AdminRoute><MyProfile></MyProfile></AdminRoute>
+        element: <AdminRoute></AdminRoute>
       },
       {
         path: "allUsers",
@@ -85,15 +88,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "reservations",
-        element:<AdminRoute> <MyProfile></MyProfile></AdminRoute>
+        element:<AdminRoute></AdminRoute>
       },
       {
         path: "addBanners",
-        element: <AdminRoute> <MyProfile></MyProfile></AdminRoute>
+        element: <AddBanner></AddBanner>
       },
       {
         path: "allBanners",
-        element:<AdminRoute><MyProfile></MyProfile></AdminRoute>
+        element:<AllBanners></AllBanners>
       },
       
     ]

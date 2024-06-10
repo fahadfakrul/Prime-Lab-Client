@@ -2,8 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
 import useAdmin from "../../../Hooks/useAdmin";
+import useStatus from "../../../Hooks/useStatus";
 const NavBar = () => {
   const [isAdmin]=useAdmin()
+  const  [status] = useStatus()
+ 
   const { user, logOut } = useAuth();
   const handleLogOut = () => {
     logOut()
@@ -36,7 +39,7 @@ const NavBar = () => {
           Tests
         </NavLink>
       </li>
-      {user && (<>{isAdmin  ? (<> <li>
+      {user && status !== 'blocked' && (<>{isAdmin  ? (<> <li>
         <NavLink
           className={({ isActive }) =>
             isActive

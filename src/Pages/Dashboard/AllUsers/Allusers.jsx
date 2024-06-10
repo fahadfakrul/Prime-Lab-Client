@@ -1,40 +1,32 @@
-// import { FaSpinner } from "react-icons/fa";
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaSpinner, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { FaTrashCan } from "react-icons/fa6";
+
 import { MdBlock } from "react-icons/md";
+import useUsers from "../../../Hooks/useUsers";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { FaUsers } from "react-icons/fa";
 
 
 const Allusers = () => {
-    
-    const axiosSecure = useAxiosSecure()
-    const { data: users = [], refetch, isLoading:loading } = useQuery({
-        queryKey: ["users"],
-        queryFn: async () => {
-          const res = await axiosSecure.get("/users");
-          return res.data;
-        },
-      });
-      const handleMakeAdmin = (user) => {
-        axiosSecure.patch(`/users/admin/${user._id}`)
+   const axiosSecure = useAxiosSecure()
+      const [users,refetch ]= useUsers();
+      console.log(users);
+      
+      const handleAdminAction = (user, action) => {
+        axiosSecure.patch(`/users/${action}/${user._id}`)
         .then((res) => {
           if (res.data.modifiedCount > 0) {
             refetch();
+            const actionMessage = action === 'admin' ? "is admin now!" : "is Blocked now!";
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: `${user.name} is an Admin Now!`,
+              title: `${user.name} ${actionMessage}`,
               showConfirmButton: false,
               timer: 1500,
             });
           }
         });
-      };
-      const handleBlockUser = (user) => {
-
       }
     return (
         <div>
@@ -67,21 +59,19 @@ const Allusers = () => {
                 <td><div className="uppercase text-red-500  rounded-3xl flex items-center justify-center"><p className={`${user.status === 'active' && 'text-green-500' }  `} >{user.status}</p></div></td>
 
                 <td> <button
-                    // onClick={() => handleDeleteTest(test)}
+                    onClick={() => handleAdminAction(user, "block")}
                     className="btn bg-[#d90429] "
                   >
-                    {loading ? (
-                      <FaSpinner className="animate-spin m-auto"></FaSpinner>
-                    ) : (
+                   
                       <MdBlock className="text-white"></MdBlock>
-                    )}
+                  
                   </button></td>
                 <td>
                    {user.role === "admin" ? (
                     "Admin"
                   ) : (
                     <button
-                      onClick={() => handleMakeAdmin(user)}
+                      onClick={() => handleAdminAction(user, "admin")}
                       className="btn  bg-[#2d3663]"
                     >
                       <FaUsers className="text-white text-2xl"></FaUsers>

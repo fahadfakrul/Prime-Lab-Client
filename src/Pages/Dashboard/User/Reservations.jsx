@@ -10,6 +10,7 @@ const Reservations = () => {
   const axiosSecure = useAxiosSecure();
   const [reservations, refetch, isLoading] = useReservations();
   const [selectedReservationId, setSelectedReservationId] = useState(null);
+  const [searchEmail, setSearchEmail] = useState("");
   console.log(reservations);
 
   if (isLoading) {
@@ -71,15 +72,31 @@ const Reservations = () => {
       }
     });
   };
+  const filteredReservations = searchEmail
+    ? reservations.filter((reservation) =>
+        reservation.email.toLowerCase().includes(searchEmail.toLowerCase())
+      )
+    : reservations;
+
   return (
     <div>
       <div className="overflow-x-auto p-20">
+        <div className="flex justify-end">
+          
+          <input
+            type="text"
+            value={searchEmail}
+            onChange={(e) => setSearchEmail(e.target.value)}
+            placeholder="Filter by email"
+            className="input input-bordered px-4 py-2 rounded-md mb-5"
+          />
+        </div>
         <div className="lg:flex justify-between">
           <p className="text-xl lg:text-4xl  font-medium text-[#2d3663] ">
             All Reservations
           </p>
           <p className="text-xl lg:text-4xl  font-medium text-[#2d3663] ">
-            Total Reservations: {reservations.length}
+            Total Reservations: {filteredReservations.length}
           </p>
         </div>
         <table className="table">
@@ -98,7 +115,7 @@ const Reservations = () => {
             </tr>
           </thead>
           <tbody>
-            {reservations.map((reservation, index) => (
+            {filteredReservations.map((reservation, index) => (
               <tr key={reservation._id}>
                 <th>{index + 1}</th>
 

@@ -19,6 +19,7 @@ import AllBanners from "../Pages/Dashboard/Admin/AllBanners/AllBanners";
 import Reservations from "../Pages/Dashboard/User/Reservations";
 import TestResults from "../Pages/Dashboard/User/TestResults";
 import UpcomingAppointments from "../Pages/Dashboard/User/UpcomingAppointments";
+import Statistics from "../Pages/Dashboard/Admin/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ export const router = createBrowserRouter([
       // admin routes
       {
         path: "statistics",
-        element: <AdminRoute></AdminRoute>
+        element: <AdminRoute><Statistics></Statistics></AdminRoute>
       },
       {
         path: "allUsers",

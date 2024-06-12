@@ -15,7 +15,7 @@ const useTests = () => {
     //     ) 
     // },[])
 
-    const {data: tests = [],  isLoading: loading, refetch} = useQuery({
+    const {data: tests = [],  isLoading, refetch} = useQuery({
         queryKey: ['tests'],
         queryFn: async () => {
            const res = await axiosPublic.get("/tests")
@@ -23,7 +23,7 @@ const useTests = () => {
         }
     })
     
-  return [tests, loading, refetch];
+  return [tests, isLoading, refetch];
 };
 
 export default useTests;

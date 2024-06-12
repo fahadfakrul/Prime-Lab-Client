@@ -46,9 +46,33 @@ const NavBar = () => {
               ? "font-semibold text-lg text-[#47CCC8]   "
               : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
           }
+          to="/doctors"
+        >
+          Our Doctors
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "font-semibold text-lg text-[#47CCC8]   "
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
+          }
           to="/aboutUs"
         >
           About Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "font-semibold text-lg text-[#47CCC8]   "
+              : " font-semibold hover:text-[#47CCC8] transition hover:text-xl   text-lg"
+          }
+          to="/contactUs"
+        >
+          Contact Us
         </NavLink>
       </li>
       {user && status !== 'blocked' && (<>{isAdmin  ? (<> <li>

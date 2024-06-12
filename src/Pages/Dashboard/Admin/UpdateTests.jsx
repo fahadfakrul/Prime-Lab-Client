@@ -9,27 +9,30 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import useTests from "../../../Hooks/useTests";
+import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const UpdateTests = () => {
-  const [tests] = useTests();
-  const { id } = useParams();
-  
-  console.log(id, tests);
-  const test = tests.find(test => test._id === id);
-  console.log(test);
-  const {_id} = test;
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(new Date());
   const [loading, setLoading] = useState(false);
+  const [tests , isLoading] = useTests();
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  if(isLoading) return <LoadingSpinner></LoadingSpinner>
+  console.log(id, tests);
+  const test = tests.find(test => test._id === id);
+  console.log(test);
+  // const {_id} = test;
+ 
+  
   const onSubmit = async (data) => {
     setLoading(true);
     const imageFile = { image: data.photo[0] };
@@ -47,14 +50,14 @@ const UpdateTests = () => {
         price: parseFloat(data.price),
         image: res.data.data.display_url,
       };
-      const testRes = await axiosSecure.patch(`/test/${_id}`, testItem);
+      const testRes = await axiosSecure.patch(`/test/${test._id}`, testItem);
       console.log(testRes.data);
       if (testRes.data.modifiedCount > 0) {
         setLoading(false);
         Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${test.name} Updated Successfully`,
+            title: `${test.title} Updated Successfully`,
             showConfirmButton: false,
             timer: 1500
           });

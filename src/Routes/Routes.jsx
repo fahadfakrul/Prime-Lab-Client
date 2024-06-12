@@ -21,6 +21,8 @@ import TestResults from "../Pages/Dashboard/User/TestResults";
 import UpcomingAppointments from "../Pages/Dashboard/User/UpcomingAppointments";
 import Statistics from "../Pages/Dashboard/Admin/Statistics";
 import AboutUs from "../Pages/About Us/AboutUs";
+import Doctors from "../Pages/Doctors/Doctors";
+import ConatactUs from "../Pages/ContactUs/ConatactUs";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: "/contactUs",
+        element: <ConatactUs></ConatactUs>
+      },
+      {
+        path: "/doctors",
+        element: <Doctors></Doctors>
       },
       {
         path: "/login",

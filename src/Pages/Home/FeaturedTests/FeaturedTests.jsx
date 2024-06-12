@@ -5,7 +5,7 @@ import TestsCards from "../../../Components/Shared/TestsCards/TestsCards";
 
 const FeaturedTests = () => {
     const axiosSecure = useAxiosSecure()
-    const { data: featuredTests = {} } = useQuery({
+    const { data: featuredTests = [] } = useQuery({
         queryKey: ["most-booked-tests"],
         queryFn: async () => {
           const res = await axiosSecure.get(`/most-booked-tests`);

@@ -20,6 +20,7 @@ import Reservations from "../Pages/Dashboard/User/Reservations";
 import TestResults from "../Pages/Dashboard/User/TestResults";
 import UpcomingAppointments from "../Pages/Dashboard/User/UpcomingAppointments";
 import Statistics from "../Pages/Dashboard/Admin/Statistics";
+import AboutUs from "../Pages/About Us/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/allTests",
         element: <AllTests></AllTests>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>
       },
       {
         path: "/login",

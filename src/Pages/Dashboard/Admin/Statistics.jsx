@@ -64,7 +64,7 @@ const pieChartData = bookedData.reportStats.map(data => {
 })
   return (
     <div>
-      <section className="p-6 my-6 dark:bg-gray-100 dark:text-[gray-800]">
+      <section className="p-6 dark:bg-gray-100 dark:text-[gray-800]">
         <div>
           <p className="text-4xl  font-medium text-[#2d3663] ">
             Welcome {user.displayName},

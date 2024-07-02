@@ -1,8 +1,21 @@
-# React + Vite
+# PrimeLab Diagnostics Center
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live site URL: https://prime-lab-diagnostic.web.app/
 
-Currently, two official plugins are available:
+* Admin Email: arif@gmail.com
+* Admin  password: Aa123456
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ## Key Features
+ ### User:
+ * Tests booking by checking slots
+ * Filtering tests by date
+ * Payment using Stripe
+ * Dashboard ( Maintain Profile in My profile , Checking appointments in My upcoming appointments, see results in Test Results)
+
+### Admin 
+* Maintain All users
+* Add Remove and Update tests
+* Add Remove and Apply banners
+* See stats
+
+  

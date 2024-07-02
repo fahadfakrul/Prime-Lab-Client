@@ -20,6 +20,9 @@ Prime Lab is a diagnostics website to book and maintain tests. The dashboards fo
 * Add Remove and Update tests
 * Add Remove and Apply banners
 * See stats
+
+## Technologies:
+ React, Node.js and Express, MongoDB, Firebase, Tailwind CSS, Javascript, NPM Packages, jwt, tanstack-query.
 ## Installation
 
 Follow these steps to install and run the project locally:

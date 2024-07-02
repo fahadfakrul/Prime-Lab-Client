@@ -20,5 +20,11 @@ Prime Lab is a diagnostics website to book and maintain tests. The dashboards fo
 * Add Remove and Update tests
 * Add Remove and Apply banners
 * See stats
+## Installation
 
+Follow these steps to install and run the project locally:
+1. Clone the repository
+2. cd your-repo-name
+3. npm install
+4. npm run dev
   

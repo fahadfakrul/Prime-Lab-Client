@@ -1,4 +1,4 @@
-# PrimeLab Diagnostics Center
+# PrimeLab Diagnostics Centre
 ## About:
  Prime Lab, a comprehensive diagnostics website that allows users to book and manage medical tests. The platform is designed with two main dashboards: one for users and another for administrators. The user dashboard enables patients to book tests and make payments through Stripe, ensuring secure transactions. The admin dashboard allows for efficient management of appointments, test results, and user information.
 

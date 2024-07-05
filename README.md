@@ -4,6 +4,9 @@
 
 In this project, I utilized the MERN stack to develop the full-stack application.
 
+### Admin id and pass:
+arif@gmail.com
+aa123456
 
 ## Live site URL: https://prime-lab-diagnostic.web.app/
 

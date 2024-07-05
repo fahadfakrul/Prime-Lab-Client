@@ -24,9 +24,31 @@ aa123456
 * Add Remove and Update tests
 * Add Remove and Apply banners
 * See stats
+## Technologies Used:
+### Front-End:
 
-## Technologies:
- React, Node.js and Express, MongoDB, Firebase, Tailwind CSS, Javascript, NPM Packages, jwt, tanstack-query.
+ - React: For building the user interface and creating dynamic, responsive components.
+ - Tailwind CSS: For styling the application with utility-first CSS framework, enabling rapid and customizable design.
+ - HTML: For structuring the web pages.
+ - CSS: For additional styling and layout adjustments.
+   
+### Back-End:
+
+ - Node.js: For server-side scripting and handling client requests.
+ - Express: A web application framework for Node.js, used to build the back-end and handle routing.
+### Database:
+
+ - MongoDB: For storing and managing data, providing a flexible NoSQL database solution.
+### Authentication and Security:
+
+- Firebase: For user authentication, ensuring secure and reliable login and registration processes.
+- JWT (JSON Web Tokens): For secure user sessions and authentication.
+### Payment Processing:
+
+ - Stripe: For handling secure and efficient payment transactions.
+
+## Other Technologies:
+ - NPM Packages, tanstack-query.
 ## Installation
 
 Follow these steps to install and run the project locally:

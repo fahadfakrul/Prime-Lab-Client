@@ -1,12 +1,11 @@
 # PrimeLab Diagnostics Center
 ## About:
-Prime Lab is a diagnostics website to book and maintain tests. The dashboards for user and admin plays a crucial role in maintaining them. User can book tests with paying thriugh stripe.
+Prime Lab is a diagnostics website to book and maintain tests. The dashboards for user and admin plays a crucial role in maintaining them. User can book tests with paying through stripe.
 
 
 ## Live site URL: https://prime-lab-diagnostic.web.app/
 
-* Admin Email: arif@gmail.com
-* Admin  password: Aa123456
+
 
  ## Key Features
  ### User:
